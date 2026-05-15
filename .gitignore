@@ -34,6 +34,8 @@ dist/
 *.swp
 
 # ── 自定义文件 ──
-SEO.txt
+*.zip
+config.txt
 git操作方式.txt
-files.zip
+SEO.txt
+*.py
