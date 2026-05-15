@@ -2,8 +2,8 @@ name: Daily Article Generator
 
 on:
   schedule:
-    # 每天 UTC 02:00 = 北京时间 10:00
-    - cron: '0 2 * * *'
+    # UTC 23:50 对应 = 北京时间 7:50
+    - cron: '50 23 * * *'
   # 允许手动触发，方便测试
   workflow_dispatch:
 
