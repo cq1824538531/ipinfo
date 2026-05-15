@@ -1,0 +1,41 @@
+name: Daily Article Generator
+
+on:
+  schedule:
+    # 每天 UTC 02:00 = 北京时间 10:00
+    - cron: '0 2 * * *'
+  # 允许手动触发，方便测试
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 仓库
+        uses: actions/checkout@v4
+        with:
+          # 需要推送权限
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install groq
+
+      - name: 生成文章
+        run: python generate_daily.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add help/ sitemap.xml help.html keywords.txt
+          git diff --staged --quiet && echo "⏭️ 无变更，跳过提交" || \
+          git commit -m "Daily article $(date +%Y-%m-%d)"
+          git push
