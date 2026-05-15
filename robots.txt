@@ -8,7 +8,7 @@ Disallow: /privacy.html
 Crawl-delay: 2
 
 # Sitemap 位置
-Sitemap: https://www.yourdomain.com/sitemap.xml
+Sitemap: https://ipinfo.gamenewspaper.com/sitemap.xml
 
 # ── 主要搜索引擎单独指令 ──
 
