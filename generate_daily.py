@@ -108,13 +108,10 @@ def pop_keyword():
 
 
 # ============================================================
-# 2. 生成 slug（中文转拼音简化版：直接用日期+序号保证唯一）
+# 2. slug 兜底（AI生成失败时用日期）
 # ============================================================
-def make_slug(keyword: str) -> str:
-    # 用日期作为slug基础，保证唯一且有时间语义
-    date_str = TODAY.replace('-', '')  # 20260516
-    # 取关键词前几个字的拼音首字母太复杂，直接用日期
-    return f"article-{date_str}"
+def fallback_slug() -> str:
+    return f"article-{TODAY.replace('-', '')}"
 
 
 # ============================================================
@@ -138,6 +135,7 @@ def generate_article(keyword: str) -> dict:
 
 {{
   "title": "文章标题（包含关键词，20字以内）",
+  "slug": "english-url-slug（3-5个英文单词，连字符分隔，体现文章主题，例如：how-to-check-ip-location）",
   "article": "## 第一章节\\n内容\\n\\n## 第二章节\\n内容"
 }}
 """
@@ -167,17 +165,26 @@ def generate_article(keyword: str) -> dict:
                 return None
 
             title = extract(raw, 'title')
+            slug = extract(raw, 'slug')
             article = extract(raw, 'article')
 
+            # slug清洗：只保留字母数字和连字符，转小写
+            if slug:
+                slug = re.sub(r'[^a-z0-9-]', '', slug.lower().replace(' ', '-'))
+                slug = re.sub(r'-+', '-', slug).strip('-')
+
             if title and article:
-                return {'title': title, 'article': article}
+                return {'title': title, 'slug': slug or fallback_slug(), 'article': article}
 
             # 降级：尝试json解析
             import json
             m = re.search(r'\{.*\}', raw, re.DOTALL)
             if m:
                 data = json.loads(m.group())
-                return {'title': data['title'], 'article': data['article']}
+                raw_slug = data.get('slug', '')
+                raw_slug = re.sub(r'[^a-z0-9-]', '', raw_slug.lower().replace(' ', '-'))
+                raw_slug = re.sub(r'-+', '-', raw_slug).strip('-')
+                return {'title': data['title'], 'slug': raw_slug or fallback_slug(), 'article': data['article']}
 
         except Exception as e:
             print(f"  ⚠️ 第{attempt+1}次重试... {e}")
@@ -381,20 +388,21 @@ if __name__ == '__main__':
     print(f"🚀 开始生成 {TODAY} 的文章")
 
     keyword = pop_keyword()
-    slug = make_slug(keyword)
-
-    # 检查文件是否已存在（防止同一天重复运行）
-    out_path = os.path.join(HELP_DIR, f"{slug}.html")
-    if os.path.exists(out_path):
-        print(f"⏭️  {out_path} 已存在，今日已生成，跳过")
-        sys.exit(0)
 
     os.makedirs(HELP_DIR, exist_ok=True)
 
     print("⏳ AI 生成文章中...")
     result = generate_article(keyword)
     title = result['title']
+    slug = result['slug']
     print(f"✅ 标题：{title}")
+    print(f"✅ Slug：{slug}")
+
+    # slug重复时加日期后缀
+    out_path = os.path.join(HELP_DIR, f"{slug}.html")
+    if os.path.exists(out_path):
+        slug = f"{slug}-{TODAY.replace('-', '')}"
+        out_path = os.path.join(HELP_DIR, f"{slug}.html")
 
     html = build_html(slug, title, result['article'])
     with open(out_path, 'w', encoding='utf-8') as f:
