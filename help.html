@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>帮助中心 - IP归属地查询工具 | 常见问题与使用教程</title>
+  <meta name="description" content="IP归属地查询工具帮助中心，收录常见问题解答、使用教程、IP知识科普等文章，帮助您快速上手并深入了解IP地址查询。">
+  <meta name="keywords" content="IP查询帮助,IP查询教程,IP归属地常见问题,内网IP,公网IP区别,VPN影响IP查询">
+
+  <link rel="canonical" href="https://www.yourdomain.com/help.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="帮助中心 - IP归属地查询工具">
+  <meta property="og:description" content="常见问题解答、使用教程与IP知识科普，助您快速上手IP归属地查询。">
+  <meta property="og:url" content="https://www.yourdomain.com/help.html">
+  <meta property="og:site_name" content="IP归属地查询工具">
+
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "IP归属地查询结果准确吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IP归属地基于运营商IP段分配数据，通常精确到城市级别。使用VPN、代理服务器或移动网络漫游时可能存在偏差。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "内网IP能查到归属地吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。192.168.x.x、10.x.x.x、172.16.x.x等私有地址仅在局域网内使用，不具备公网地理位置信息，无法查询归属地。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "查询频率有限制吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "免费API每分钟最多支持45次查询，对于个人日常使用完全足够。如需大批量查询，建议升级IPinfo.io付费套餐。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "为什么查询显示的城市和我实际位置不符？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IP地址由运营商按区域批量分配，实际使用位置和IP注册地点可能不一致。此外，移动网络、宽带动态IP、企业专线等都可能导致位置偏差，这是IP定位技术的固有局限性。"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.yourdomain.com/" },
+      { "@type": "ListItem", "position": 2, "name": "帮助中心", "item": "https://www.yourdomain.com/help.html" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="top-nav" aria-label="主导航">
+    <div class="top-nav__inner">
+      <a class="top-nav__brand" href="index.html">
+        <span class="top-nav__brand-icon">🌍</span>
+        IP归属地查询
+      </a>
+      <ul class="top-nav__links" role="list">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="help.html" class="active" aria-current="page">帮助中心</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content" id="main-content">
+    <div class="container">
+
+      <!-- ── Breadcrumb ── -->
+      <nav class="breadcrumb" aria-label="面包屑导航">
+        <a href="index.html">首页</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">帮助中心</span>
+      </nav>
+
+      <!-- ── Page Hero ── -->
+      <div class="page-hero page-hero--content" style="border-radius:12px;margin-bottom:24px;padding:36px 0 28px;">
+        <div class="page-hero__inner">
+          <h1 class="page-hero__title">📚 帮助中心</h1>
+          <p class="page-hero__subtitle">常见问题、使用教程与 IP 知识科普</p>
+        </div>
+      </div>
+
+      <!-- ── Help Search ── -->
+      <div class="card mb-20">
+        <div class="card__body">
+          <div class="help-search" role="search">
+            <span class="help-search__icon" aria-hidden="true">🔍</span>
+            <input
+              type="search"
+              placeholder="搜索帮助文章，例如：内网IP、VPN、查询失败…"
+              aria-label="搜索帮助文章"
+              id="helpSearch"
+              oninput="filterArticles(this.value)"
+            >
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);" id="searchHint"></p>
+        </div>
+      </div>
+
+      <!-- ── FAQ Category ── -->
+      <div class="card category-card mb-20" id="cat-faq">
+        <div class="category-card__header">
+          <span class="category-card__icon" aria-hidden="true">❓</span>
+          <h2 class="category-card__title">常见问题</h2>
+          <span class="category-card__count">4 篇文章</span>
+        </div>
+        <div class="article-list" id="list-faq" role="list">
+          <a class="article-item" href="help/faq-accuracy.html" role="listitem">
+            <span class="article-item__title">IP归属地查询结果准确吗？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/faq-private-ip.html" role="listitem">
+            <span class="article-item__title">内网IP为什么查不到归属地？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/faq-rate-limit.html" role="listitem">
+            <span class="article-item__title">查询频率有限制吗？免费版够用吗？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/faq-location-mismatch.html" role="listitem">
+            <span class="article-item__title">为什么显示的城市和我实际位置不符？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Tutorial Category ── -->
+      <div class="card category-card mb-20" id="cat-tutorial">
+        <div class="category-card__header">
+          <span class="category-card__icon" aria-hidden="true">📖</span>
+          <h2 class="category-card__title">使用教程</h2>
+          <span class="category-card__count">3 篇文章</span>
+        </div>
+        <div class="article-list" id="list-tutorial" role="list">
+          <a class="article-item" href="help/tutorial-basic.html" role="listitem">
+            <span class="article-item__title">如何查询任意 IP 地址的归属地？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/tutorial-my-ip.html" role="listitem">
+            <span class="article-item__title">如何快速查询我的公网 IP？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/tutorial-map.html" role="listitem">
+            <span class="article-item__title">如何在地图上查看 IP 地理位置？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Knowledge Category ── -->
+      <div class="card category-card mb-20" id="cat-knowledge">
+        <div class="category-card__header">
+          <span class="category-card__icon" aria-hidden="true">🧠</span>
+          <h2 class="category-card__title">IP 知识科普</h2>
+          <span class="category-card__count">5 篇文章</span>
+        </div>
+        <div class="article-list" id="list-knowledge" role="list">
+          <a class="article-item" href="help/what-is-ip.html" role="listitem">
+            <span class="article-item__title">什么是 IP 地址？IPv4 与 IPv6 有何区别？</span>
+            <span class="article-item__meta">2025-04-20</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/public-vs-private-ip.html" role="listitem">
+            <span class="article-item__title">公网 IP 和内网 IP 有什么区别？</span>
+            <span class="article-item__meta">2025-04-20</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/what-is-isp.html" role="listitem">
+            <span class="article-item__title">什么是 ISP？运营商如何分配 IP 地址？</span>
+            <span class="article-item__meta">2025-04-20</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/vpn-and-ip.html" role="listitem">
+            <span class="article-item__title">VPN 如何改变 IP 归属地显示？</span>
+            <span class="article-item__meta">2025-04-25</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/dynamic-vs-static-ip.html" role="listitem">
+            <span class="article-item__title">动态 IP 和静态 IP 有什么区别？</span>
+            <span class="article-item__meta">2025-04-25</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Troubleshooting Category ── -->
+      <div class="card category-card mb-20" id="cat-trouble">
+        <div class="category-card__header">
+          <span class="category-card__icon" aria-hidden="true">🔧</span>
+          <h2 class="category-card__title">问题排查</h2>
+          <span class="category-card__count">3 篇文章</span>
+        </div>
+        <div class="article-list" id="list-trouble" role="list">
+          <a class="article-item" href="help/trouble-query-failed.html" role="listitem">
+            <span class="article-item__title">查询失败，提示"网络请求失败"怎么办？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/trouble-invalid-ip.html" role="listitem">
+            <span class="article-item__title">输入 IP 地址后提示格式错误？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="article-item" href="help/trouble-slow-response.html" role="listitem">
+            <span class="article-item__title">查询速度慢，响应超时如何处理？</span>
+            <span class="article-item__meta">2025-05-01</span>
+            <span class="article-item__arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Still need help ── -->
+      <div class="card" style="text-align:center;">
+        <div class="card__body" style="padding:32px 24px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🤝</div>
+          <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">没有找到答案？</h2>
+          <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">我们很乐意帮助您解决问题。请通过联系我们页面提交您的问题，我们会在 24 小时内回复。</p>
+          <a href="contact.html" class="btn btn--primary" style="display:inline-flex;">📧 联系我们</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">🌍 IP归属地查询工具</div>
+          <p class="footer__brand-desc">免费、快速、准确的 IP 地址归属地查询服务。</p>
+        </div>
+        <div>
+          <div class="footer__col-title">快速导航</div>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html">首页查询</a></li>
+            <li><a href="help.html">帮助中心</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">法律信息</div>
+          <ul class="footer__links" role="list">
+            <li><a href="privacy.html">隐私政策</a></li>
+            <li><a href="sitemap.xml">网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2025 IP归属地查询工具 · 基于 MIT 许可证</span>
+        <span class="footer__source">数据来源：<a href="https://ipinfo.io" target="_blank" rel="noopener noreferrer">IPinfo.io</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// Simple client-side article filtering
+function filterArticles(query) {
+  const q = query.toLowerCase().trim();
+  const items = document.querySelectorAll('.article-item');
+  let visible = 0;
+  items.forEach(item => {
+    const title = item.querySelector('.article-item__title').textContent.toLowerCase();
+    const show = !q || title.includes(q);
+    item.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+
+  // Show/hide category cards if all articles hidden
+  document.querySelectorAll('.category-card').forEach(card => {
+    const list = card.querySelector('.article-list');
+    const anyVisible = [...list.querySelectorAll('.article-item')]
+      .some(i => i.style.display !== 'none');
+    card.style.display = anyVisible ? '' : 'none';
+  });
+
+  const hint = document.getElementById('searchHint');
+  hint.textContent = q ? `找到 ${visible} 篇相关文章` : '';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── TDK ── -->
+  <title>IP归属地查询 - 免费查询IP地址位置、运营商、时区信息</title>
+  <meta name="description" content="免费在线IP归属地查询工具，支持任意IPv4地址查询国家、省份、城市、运营商、经纬度、时区等详细信息。一键查询您当前的公网IP地址。">
+  <meta name="keywords" content="IP归属地查询,IP地址查询,IP定位,IP查询工具,查询IP归属地,IP地理位置,公网IP查询">
+
+  <!-- ── Canonical & Language ── -->
+  <link rel="canonical" href="https://www.yourdomain.com/">
+  <link rel="alternate" hreflang="zh-CN" href="https://www.yourdomain.com/">
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IP归属地查询 - 免费查询IP地址位置信息">
+  <meta property="og:description" content="免费在线IP归属地查询工具，支持查询国家、省份、城市、运营商、时区等详细信息。">
+  <meta property="og:url" content="https://www.yourdomain.com/">
+  <meta property="og:site_name" content="IP归属地查询工具">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="IP归属地查询 - 免费查询IP地址位置信息">
+  <meta name="twitter:description" content="免费在线IP归属地查询工具，支持查询国家、省份、城市、运营商、时区等详细信息。">
+
+  <!-- ── Structured Data ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IP归属地查询工具",
+    "description": "免费在线IP归属地查询工具，支持任意IPv4地址查询国家、省份、城市、运营商、经纬度、时区等详细信息",
+    "url": "https://www.yourdomain.com/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+    "inLanguage": "zh-CN",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- ── BreadcrumbList (首页不显示面包屑但仍输出结构化数据) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.yourdomain.com/" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ── Navigation ── -->
+  <nav class="top-nav" aria-label="主导航">
+    <div class="top-nav__inner">
+      <a class="top-nav__brand" href="index.html">
+        <span class="top-nav__brand-icon">🌍</span>
+        IP归属地查询
+      </a>
+      <ul class="top-nav__links" role="list">
+        <li><a href="index.html" class="active" aria-current="page">首页</a></li>
+        <li><a href="help.html">帮助中心</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="page-hero page-hero--home" aria-labelledby="hero-title">
+    <div class="page-hero__inner">
+      <div class="page-hero__eyebrow">🆓 完全免费 · 无需注册</div>
+      <h1 class="page-hero__title" id="hero-title">IP 归属地查询</h1>
+      <p class="page-hero__subtitle">输入任意 IPv4 地址，立刻获取国家、城市、运营商、时区等详细信息</p>
+    </div>
+  </section>
+
+  <main class="main-content" id="main-content">
+    <div class="container">
+
+      <!-- ── Search ── -->
+      <section class="card search-card" aria-label="IP 查询输入">
+        <div class="card__body">
+          <h2 class="section-title">🔍 查询 IP 地址</h2>
+          <div class="search-box" role="search">
+            <label for="ipInput" class="sr-only">输入 IP 地址</label>
+            <input
+              type="text"
+              id="ipInput"
+              placeholder="输入 IP 地址，例如：8.8.8.8"
+              autocomplete="off"
+              inputmode="numeric"
+              aria-label="IP 地址输入框"
+            >
+            <button id="searchBtn" class="btn btn--primary" onclick="queryIP()" aria-label="查询 IP">
+              <span>查询</span>
+              <span aria-hidden="true">🔍</span>
+            </button>
+          </div>
+          <div class="quick-actions">
+            <button class="btn btn--secondary" onclick="queryMyIP()">
+              <span aria-hidden="true">📍</span> 查询我的 IP
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Loading ── -->
+      <div id="loading" class="card loading-card" role="status" aria-live="polite">
+        <div class="loading-inner">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>正在查询 IP 信息，请稍候…</span>
+        </div>
+      </div>
+
+      <!-- ── Error ── -->
+      <div id="error" class="card error-card" role="alert" aria-live="assertive">
+        <div class="error-inner"></div>
+      </div>
+
+      <!-- ── Result ── -->
+      <section id="ipInfo" class="card result-card" aria-label="查询结果" aria-live="polite">
+        <div class="result-header">
+          <span class="result-ip" id="ipAddress" aria-label="IP 地址"></span>
+          <span class="badge" id="ipType"></span>
+        </div>
+        <div class="info-grid" role="list">
+          <div class="info-item" role="listitem">
+            <span class="info-label">🌏 国家/地区</span>
+            <span class="info-value" id="country"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">📍 省份/州</span>
+            <span class="info-value" id="region"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">🏙️ 城市</span>
+            <span class="info-value" id="city"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">📮 邮编</span>
+            <span class="info-value" id="zip"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">🌐 运营商 (ISP)</span>
+            <span class="info-value" id="isp"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">🏢 自治系统号</span>
+            <span class="info-value info-value--mono" id="org"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">📡 经纬度</span>
+            <span class="info-value info-value--mono" id="location"></span>
+          </div>
+          <div class="info-item" role="listitem">
+            <span class="info-label">⏰ 时区</span>
+            <span class="info-value" id="timezone"></span>
+          </div>
+        </div>
+        <div class="map-section" id="mapArea"></div>
+      </section>
+
+      <!-- ── Instructions ── -->
+      <aside class="card mb-20" aria-label="使用说明">
+        <div class="card__body">
+          <h2 class="section-title">📖 使用说明</h2>
+          <ol class="instruction-list" role="list">
+            <li>
+              <span class="instruction-list__num" aria-hidden="true">1</span>
+              在上方输入框中填写要查询的 IPv4 地址（如 <code>8.8.8.8</code>），点击「查询」按钮或按回车键。
+            </li>
+            <li>
+              <span class="instruction-list__num" aria-hidden="true">2</span>
+              点击「查询我的 IP」可一键获取您当前公网 IP 及其归属地信息。
+            </li>
+            <li>
+              <span class="instruction-list__num" aria-hidden="true">3</span>
+              查询结果包含：国家/地区、省份、城市、邮编、运营商、经纬度坐标、时区等详细数据。
+            </li>
+            <li>
+              <span class="instruction-list__num" aria-hidden="true">4</span>
+              结果中附有 Google Maps 和 OpenStreetMap 链接，可直观查看 IP 的地理位置。
+            </li>
+          </ol>
+          <div class="notice-box" role="note">
+            <strong>📝 提示：</strong>本工具使用 <a href="https://ipinfo.io" target="_blank" rel="noopener noreferrer">IPinfo.io</a> 免费 API，IP 定位精确到城市级别，结果仅供参考。
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── FAQ Snippet for SEO ── -->
+      <section class="card" aria-labelledby="faq-title">
+        <div class="card__body">
+          <h2 class="section-title" id="faq-title">❓ 常见问题</h2>
+          <div class="content-section">
+            <h3>IP 归属地查询结果准确吗？</h3>
+            <p>IP 归属地基于运营商 IP 段分配，通常精确到城市级别。使用 VPN、代理或移动网络时可能存在偏差。</p>
+            <h3>内网 IP 能查到归属地吗？</h3>
+            <p>不能。192.168.x.x、10.x.x.x 等私有地址仅在局域网内使用，不具备公网地理位置信息。</p>
+            <h3>查询频率有限制吗？</h3>
+            <p>免费 API 每分钟最多支持 45 次查询，个人日常使用完全足够。如需批量查询请参考<a href="help.html">帮助中心</a>。</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">🌍 IP归属地查询工具</div>
+          <p class="footer__brand-desc">免费、快速、准确的 IP 地址归属地查询服务，帮助用户了解任意 IP 的地理位置与网络信息。</p>
+        </div>
+        <div>
+          <div class="footer__col-title">快速导航</div>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html">首页查询</a></li>
+            <li><a href="help.html">帮助中心</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">法律信息</div>
+          <ul class="footer__links" role="list">
+            <li><a href="privacy.html">隐私政策</a></li>
+            <li><a href="sitemap.xml">网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2025 IP归属地查询工具 · 基于 MIT 许可证</span>
+        <span class="footer__source">数据来源：<a href="https://ipinfo.io" target="_blank" rel="noopener noreferrer">IPinfo.io</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>联系我们 - IP归属地查询工具 | 问题反馈与建议</title>
+  <meta name="description" content="联系IP归属地查询工具团队，提交使用问题、功能建议或合作咨询。我们通常在24小时内回复。">
+  <meta name="keywords" content="IP查询工具联系方式,IP查询反馈,联系我们">
+
+  <link rel="canonical" href="https://www.yourdomain.com/contact.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="联系我们 - IP归属地查询工具">
+  <meta property="og:description" content="提交使用问题、功能建议或合作咨询，我们通常在24小时内回复。">
+  <meta property="og:url" content="https://www.yourdomain.com/contact.html">
+  <meta property="og:site_name" content="IP归属地查询工具">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.yourdomain.com/" },
+      { "@type": "ListItem", "position": 2, "name": "联系我们", "item": "https://www.yourdomain.com/contact.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "联系我们",
+    "description": "IP归属地查询工具联系页面，提交使用问题、功能建议或合作咨询",
+    "url": "https://www.yourdomain.com/contact.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="top-nav" aria-label="主导航">
+    <div class="top-nav__inner">
+      <a class="top-nav__brand" href="index.html">
+        <span class="top-nav__brand-icon">🌍</span>
+        IP归属地查询
+      </a>
+      <ul class="top-nav__links" role="list">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="help.html">帮助中心</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">联系我们</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content" id="main-content">
+    <div class="container">
+
+      <!-- ── Breadcrumb ── -->
+      <nav class="breadcrumb" aria-label="面包屑导航">
+        <a href="index.html">首页</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">联系我们</span>
+      </nav>
+
+      <!-- ── Page Hero ── -->
+      <div class="page-hero page-hero--content" style="border-radius:12px;margin-bottom:24px;padding:36px 0 28px;">
+        <div class="page-hero__inner">
+          <h1 class="page-hero__title">📬 联系我们</h1>
+          <p class="page-hero__subtitle">有问题、建议或合作意向？我们很乐意倾听</p>
+        </div>
+      </div>
+
+      <!-- ── Contact Options ── -->
+      <div class="card mb-20">
+        <div class="card__body">
+          <h2 class="section-title">联系方式</h2>
+          <div class="contact-grid">
+            <a class="contact-option" href="https://github.com/yourusername/ip-location/issues" target="_blank" rel="noopener noreferrer">
+              <span class="contact-option__icon">🐛</span>
+              <div class="contact-option__title">GitHub Issues</div>
+              <div class="contact-option__desc">报告 Bug、提交功能请求，公开讨论，方便其他用户查阅</div>
+            </a>
+            <a class="contact-option" href="https://github.com/yourusername/ip-location/discussions" target="_blank" rel="noopener noreferrer">
+              <span class="contact-option__icon">💬</span>
+              <div class="contact-option__title">GitHub Discussions</div>
+              <div class="contact-option__desc">一般性问题、使用心得交流、功能建议讨论</div>
+            </a>
+          </div>
+
+          <div class="alert-box alert-box--info" style="margin-top:8px;">
+            <strong>📝 提交前请先查阅</strong>：<a href="help.html">帮助中心</a>已收录常见问题解答，大多数疑问都可以在那里找到答案。
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Feedback Form ── -->
+      <div class="card mb-20">
+        <div class="card__body">
+          <h2 class="section-title">快速反馈</h2>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;">
+            填写下方表单，我们将在 <strong>24 小时内</strong>通过 GitHub 或邮件回复您。
+          </p>
+
+          <div id="formSuccess" style="display:none;" class="alert-box alert-box--info" role="status">
+            ✅ 感谢您的反馈！我们已收到并将尽快处理。
+          </div>
+
+          <div id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="contactName">您的称呼 <span aria-hidden="true" style="color:var(--error-color)">*</span></label>
+              <input type="text" id="contactName" class="form-control" placeholder="例如：张三" required aria-required="true" maxlength="50">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">邮箱地址 <span aria-hidden="true" style="color:var(--error-color)">*</span></label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="your@email.com" required aria-required="true">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactType">反馈类型</label>
+              <select id="contactType" class="form-control" aria-label="选择反馈类型">
+                <option value="bug">🐛 Bug 报告</option>
+                <option value="feature">💡 功能建议</option>
+                <option value="question">❓ 使用问题</option>
+                <option value="cooperation">🤝 合作咨询</option>
+                <option value="other">📝 其他</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">详细描述 <span aria-hidden="true" style="color:var(--error-color)">*</span></label>
+              <textarea id="contactMessage" class="form-control" placeholder="请详细描述您的问题或建议，包括：出现问题的步骤、期望的结果、实际发生的情况等。" required aria-required="true" maxlength="2000"></textarea>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-align:right;">
+                <span id="charCount">0</span> / 2000 字
+              </div>
+            </div>
+
+            <div id="formError" style="display:none;" class="alert-box alert-box--warning" role="alert"></div>
+
+            <button type="button" class="btn btn--primary" onclick="submitForm()" style="width:100%;justify-content:center;padding:12px;">
+              发送反馈 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Response Time ── -->
+      <div class="card">
+        <div class="card__body">
+          <h2 class="section-title">📌 温馨提示</h2>
+          <div class="content-section" style="margin:0;">
+            <ul>
+              <li><strong>回复时间：</strong>工作日通常在 24 小时内回复，节假日可能稍有延迟。</li>
+              <li><strong>Bug 报告：</strong>请尽量提供出错截图、使用的浏览器版本和操作步骤，有助于我们更快定位问题。</li>
+              <li><strong>功能建议：</strong>欢迎任何改进想法，我们会认真评估并回复。</li>
+              <li><strong>隐私问题：</strong>请参阅我们的 <a href="privacy.html">隐私政策</a>，如有疑问可在此提交。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">🌍 IP归属地查询工具</div>
+          <p class="footer__brand-desc">免费、快速、准确的 IP 地址归属地查询服务。</p>
+        </div>
+        <div>
+          <div class="footer__col-title">快速导航</div>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html">首页查询</a></li>
+            <li><a href="help.html">帮助中心</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">法律信息</div>
+          <ul class="footer__links" role="list">
+            <li><a href="privacy.html">隐私政策</a></li>
+            <li><a href="sitemap.xml">网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2025 IP归属地查询工具 · 基于 MIT 许可证</span>
+        <span class="footer__source">数据来源：<a href="https://ipinfo.io" target="_blank" rel="noopener noreferrer">IPinfo.io</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// Character counter
+const msgEl = document.getElementById('contactMessage');
+const countEl = document.getElementById('charCount');
+if (msgEl) {
+  msgEl.addEventListener('input', () => {
+    countEl.textContent = msgEl.value.length;
+  });
+}
+
+function submitForm() {
+  const name    = document.getElementById('contactName').value.trim();
+  const email   = document.getElementById('contactEmail').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+  const errorEl = document.getElementById('formError');
+
+  errorEl.style.display = 'none';
+
+  if (!name) { showFormError('请填写您的称呼'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showFormError('请填写有效的邮箱地址'); return; }
+  if (!message || message.length < 10) { showFormError('请填写至少 10 个字符的描述'); return; }
+
+  // In production, send to your backend / Formspree / Netlify Forms
+  // Here we simulate success
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showFormError(msg) {
+  const el = document.getElementById('formError');
+  el.textContent = '⚠️ ' + msg;
+  el.style.display = 'block';
+}
+</script>
+</body>
+</html>

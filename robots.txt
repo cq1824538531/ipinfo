@@ -1,0 +1,41 @@
+User-agent: *
+Allow: /
+
+# 不收录隐私政策页面（可选，避免浪费爬取配额）
+Disallow: /privacy.html
+
+# 常见爬虫限速（避免对免费 API 造成压力）
+Crawl-delay: 2
+
+# Sitemap 位置
+Sitemap: https://www.yourdomain.com/sitemap.xml
+
+# ── 主要搜索引擎单独指令 ──
+
+User-agent: Googlebot
+Allow: /
+Disallow: /privacy.html
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Disallow: /privacy.html
+Crawl-delay: 2
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /privacy.html
+Crawl-delay: 2
+
+# 屏蔽已知恶意爬虫
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
