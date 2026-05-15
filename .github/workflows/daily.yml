@@ -38,4 +38,5 @@ jobs:
           git add help/ sitemap.xml help.html keywords.txt
           git diff --staged --quiet && echo "⏭️ 无变更，跳过提交" || \
           git commit -m "Daily article $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
