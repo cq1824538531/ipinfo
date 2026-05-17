@@ -158,4 +158,12 @@
     <priority>0.7</priority>
   </url>
 
+
+  <url>
+    <loc>https://ipinfo.gamenewspaper.com/help/how-to-find-your-public-ip.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
