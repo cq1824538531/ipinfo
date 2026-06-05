@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python查询IP归属地教程 | 帮助中心 - IP归属地查询工具</title>
+  <meta name="description" content="什么是IP归属地查询 IP归属地查询可以帮助我们确定一个IP地址的地理位置信息，包括所在国家、省份、城市和运营商等。通过Python实现该功能，可以快速集成到网络工具开发、数据分析等场景中。 查询IP归属地实现步骤 1. 安装第三方库 推荐使用ipgeolocation库（pip install i">
+  <link rel="canonical" href="https://ipinfo.gamenewspaper.com/help/python-ip-lookup-tutorial.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Python查询IP归属地教程">
+  <meta property="og:url" content="https://ipinfo.gamenewspaper.com/help/python-ip-lookup-tutorial.html">
+  <meta property="og:site_name" content="IP归属地查询工具">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Python查询IP归属地教程",
+    "datePublished": "2026-06-05",
+    "dateModified": "2026-06-05",
+    "publisher": {
+      "@type": "Organization",
+      "name": "IP归属地查询工具",
+      "url": "https://ipinfo.gamenewspaper.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"首页","item":"https://ipinfo.gamenewspaper.com/"},
+      {"@type":"ListItem","position":2,"name":"帮助中心","item":"https://ipinfo.gamenewspaper.com/help.html"},
+      {"@type":"ListItem","position":3,"name":"Python查询IP归属地教程","item":"https://ipinfo.gamenewspaper.com/help/python-ip-lookup-tutorial.html"}
+    ]
+  }
+  </script>
+  <style>
+:root{--bg:#f8f9fa;--card:#fff;--primary:#4f8ef7;--text:#1a1a2e;--text-secondary:#555;--text-muted:#888;--border:#e5e7eb;--radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.page-wrapper{min-height:100vh;display:flex;flex-direction:column}
+.top-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px}
+.top-nav__inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.top-nav__brand{font-weight:700;font-size:1.05rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:6px}
+.top-nav__links{list-style:none;display:flex;gap:24px}
+.top-nav__links a{color:var(--text-secondary);text-decoration:none;font-size:.95rem}
+.top-nav__links a.active,.top-nav__links a:hover{color:var(--primary)}
+.main-content{flex:1;padding:32px 16px}
+.container{max-width:780px;margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none}.breadcrumb a:hover{color:var(--primary)}
+.article-header{margin-bottom:32px}
+.article-header h1{font-size:1.65rem;font-weight:800;line-height:1.35;margin-bottom:12px}
+.article-meta{font-size:13px;color:var(--text-muted);display:flex;gap:16px;flex-wrap:wrap}
+.article-body{background:var(--card);border-radius:var(--radius);padding:32px;border:1px solid var(--border)}
+.article-body h2{font-size:1.15rem;font-weight:700;margin:28px 0 12px;color:var(--text);padding-bottom:6px;border-bottom:2px solid var(--primary);display:inline-block}
+.article-body h2:first-child{margin-top:0}
+.article-body p{margin-bottom:14px;color:var(--text-secondary);font-size:.97rem}
+.article-body ul,.article-body ol{margin:10px 0 16px 20px;color:var(--text-secondary);font-size:.97rem}
+.article-body li{margin-bottom:6px}
+.article-body strong{color:var(--text)}
+.article-body code{background:#f1f3f5;border-radius:4px;padding:1px 6px;font-size:.9em;color:#c0392b;font-family:monospace}
+.back-link{margin-top:28px;display:inline-flex;align-items:center;gap:6px;color:var(--primary);text-decoration:none;font-size:.93rem}
+.back-link:hover{text-decoration:underline}
+footer{background:var(--card);border-top:1px solid var(--border);padding:28px 24px;margin-top:40px}
+.footer__inner{max-width:960px;margin:0 auto}
+.footer__bottom{font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px}
+.footer__bottom a{color:var(--text-muted)}
+@media(max-width:600px){.article-body{padding:20px}.article-header h1{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="top-nav" aria-label="主导航">
+    <div class="top-nav__inner">
+      <a class="top-nav__brand" href="../index.html">
+        <span>🌍</span> IP归属地查询
+      </a>
+      <ul class="top-nav__links" role="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../help.html" class="active" aria-current="page">帮助中心</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../contact.html">联系我们</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content" id="main-content">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="面包屑导航">
+        <a href="../index.html">首页</a>
+        <span aria-hidden="true">›</span>
+        <a href="../help.html">帮助中心</a>
+        <span aria-hidden="true">›</span>
+        <span>Python查询IP归属地教程</span>
+      </nav>
+
+      <div class="article-header">
+        <h1>Python查询IP归属地教程</h1>
+        <div class="article-meta">
+          <span>📅 2026-06-05</span>
+          <span>📂 IP知识</span>
+        </div>
+      </div>
+
+      <div class="article-body">
+        <h2>什么是IP归属地查询</h2>
+<p>IP归属地查询可以帮助我们确定一个IP地址的地理位置信息，包括所在国家、省份、城市和运营商等。通过Python实现该功能，可以快速集成到网络工具开发、数据分析等场景中。</p>
+<h2>查询IP归属地实现步骤</h2>
+<p>1. 安装第三方库 推荐使用ipgeolocation库（pip install ipgeolocation），或调用免费API服务如ipapi.com</p>
+<p>2. 获取目标IP地址</p>
+<ul><li>可通过input()函数手动输入</li>
+<li>从文本文件批量读取</li>
+<li>获取本机公网IP</li></ul>
+<p>3. 编写查询函数 示例代码： import requests</p>
+<p>def get_ip_location(ip): url = f'https://ipapi.com/{ip}/json' response = requests.get(url).json() return { '国家': response['country'], '城市': response['city'], '运营商': response['org'] }</p>
+<p>4. 显示查询结果 使用print()函数格式化输出结果，或保存为CSV文件</p>
+<h2>注意事项</h2>
+<ul><li>免费API通常有调用次数限制</li>
+<li>部分API需要申请API_KEY</li>
+<li>私密IP（如192.168.x.x）无法查询地理位置</li>
+<li>查询结果可能存在100-300公里定位误差</li></ul>
+<h2>功能扩展建议</h2>
+<p>1. 添加GUI界面：使用Tkinter创建图形化操作窗口 2. 实现批量查询：支持txt文件导入导出 3. 增加历史记录功能：保存查询日志 4. 开发Web应用：用Flask搭建简易查询系统</p>
+<p>通过本教程学习，您可以快速掌握Python查询IP归属地的核心方法。建议从简单示例开始实践，逐步增加功能模块，遇到问题可查阅相关库的官方文档获取支持。</p>
+      </div>
+
+      <a href="../help.html" class="back-link">← 返回帮助中心</a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__bottom">
+        <span>© 2026 IP归属地查询工具 · 数据来源：<a href="https://ipinfo.io" target="_blank" rel="noopener noreferrer">IPinfo.io</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
