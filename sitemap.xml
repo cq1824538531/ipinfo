@@ -358,4 +358,12 @@
     <priority>0.7</priority>
   </url>
 
+
+  <url>
+    <loc>https://ipinfo.gamenewspaper.com/help/router-external-ip-check-guide.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
